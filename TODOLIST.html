@@ -1,24 +1,22 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
     <head>
         <title>To-do List</title>
         <style>
-            body{
+            body {
                 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                 text-align: center;
                 background-color: white;
             }
-            h1{
+            h1 {
                 color: navy;
-
             }
-            input{
+            input {
                 width: 220px;
                 padding: 10px;
                 font-size: 18px;
             }
-            button{
+            button {
                 padding: 10px 15px;
                 font-size: 18px;
                 background-color: royalblue;
@@ -26,11 +24,11 @@
                 border: none;
                 cursor: pointer;
             }
-            ul{
+            ul {
                 list-style: none;
                 padding: 0;
             }
-            li{
+            li {
                 background-color: white;
                 margin: 10px auto;
                 width: 300px;
@@ -41,7 +39,7 @@
                 justify-content: space-between;
                 align-items: center;
             }
-            li button{
+            li button {
                 margin-left: 10px;
                 background-color: crimson;
                 color: white;
@@ -49,196 +47,80 @@
                 border-radius: 5px;
                 padding: 5px 10px;
             }
-            </style>
-            </head>
+        </style>
+    </head>
 
-            <body>
-                <h1>MY TO-DO LIST</h1>
-                <input id="todoInput" placeholder="ENTER A TASK">
-                <button onclick="addTodo()">ADD</button>
-                <ul id="todolist"></ul>
-            
-                <script>
-                         let input = document.getElementById("todoInput");
-                         let todos = [];
-                        input.addEventListener("keydown", function(event){
-                            if(event.key === "Enter"){
-                                addTodo();
-                            }
-                        });
-                    function addTodo(){
-                        let text = input.value.trim();
-                        if(text === ""){
-                            alert("PLEASE ENTER A TASK!")
-                            return;
-                        }
-                        createTodo(text);
-                        todos.push(text);
-                        localStorage.setItem(
-                            "todos",
-                            JSON.stringify(todos)
-                        );
-                        input.value = "";
-                    }
-                    let savedtodos = 
-                    localStorage.getItem("todos");
-                    if(savedtodos){
-                        todos = JSON.parse(savedtodos);
-                        todos.forEach(function(todo){
-                          createTodo(todo);  
-                        });
-                    }
-                    function createTodo(text){
-                        let li = document.createElement("li");
-                        li.ineerHTML = text;
-                        li.onclick = function(){
-                            if(li.style.textDecoration === "line-through"){
-                                li.style.textDecoration = "none";
-                                li.style.color = "black";
-                            }else{
-                                li.style.textDecoration = "line-through";
-                                li.style.color = "gray";
-                            }
-                        };
-                        let deleteButton = document.createElement("button");
-                        deleteButton.innerHTML = "X";
-                        deleteButton.onclick = function(event){
-                            event.stopPropagation();
-                            let index = todos.indexOf(text);
-                            if(index !== -1){
-                                todos.splice(index, 1);
-                            }
-                            localStorage.setItem(
-                                "todos",
-                                JSON.stringify(todos)
-                            );
-                            li.remove();
-                        };
-                        li.appendChild(deleteButton);
-                        document.getElementById("todolist").appendChild(li);
-                    }
-                    </script>
-                    </body>
-=======
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>To-do List</title>
-        <style>
-            body{
-                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-                text-align: center;
-                background-color: white;
-            }
-            h1{
-                color: navy;
+    <body>
+        <h1>MY TO-DO LIST</h1>
+        <input id="todoInput" placeholder="ENTER A TASK">
+        <button onclick="addTodo()">ADD</button>
+        <ul id="todolist"></ul>
 
-            }
-            input{
-                width: 220px;
-                padding: 10px;
-                font-size: 18px;
-            }
-            button{
-                padding: 10px 15px;
-                font-size: 18px;
-                background-color: royalblue;
-                color: white;
-                border: none;
-                cursor: pointer;
-            }
-            ul{
-                list-style: none;
-                padding: 0;
-            }
-            li{
-                background-color: white;
-                margin: 10px auto;
-                width: 300px;
-                padding: 10px;
-                border-radius: 8px;
-                font-size: 20px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            li button{
-                margin-left: 10px;
-                background-color: crimson;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                padding: 5px 10px;
-            }
-            </style>
-            </head>
+        <script>
+            const input = document.getElementById("todoInput");
+            const todoList = document.getElementById("todolist");
+            let todos = [];
 
-            <body>
-                <h1>MY TO-DO LIST</h1>
-                <input id="todoInput" placeholder="ENTER A TASK">
-                <button onclick="addTodo()">ADD</button>
-                <ul id="todolist"></ul>
-            
-                <script>
-                         let input = document.getElementById("todoInput");
-                         let todos = [];
-                        input.addEventListener("keydown", function(event){
-                            if(event.key === "Enter"){
-                                addTodo();
-                            }
-                        });
-                    function addTodo(){
-                        let text = input.value.trim();
-                        if(text === ""){
-                            alert("PLEASE ENTER A TASK!")
-                            return;
-                        }
-                        createTodo(text);
-                        todos.push(text);
-                        localStorage.setItem(
-                            "todos",
-                            JSON.stringify(todos)
-                        );
-                        input.value = "";
+            input.addEventListener("keydown", function (event) {
+                if (event.key === "Enter") {
+                    addTodo();
+                }
+            });
+
+            function addTodo() {
+                const text = input.value.trim();
+                if (text === "") {
+                    alert("PLEASE ENTER A TASK!");
+                    return;
+                }
+
+                createTodo(text);
+                todos.push(text);
+                localStorage.setItem("todos", JSON.stringify(todos));
+                input.value = "";
+            }
+
+            const savedTodos = localStorage.getItem("todos");
+            if (savedTodos) {
+                try {
+                    todos = JSON.parse(savedTodos);
+                    todos.forEach(function (todo) {
+                        createTodo(todo);
+                    });
+                } catch (error) {
+                    localStorage.removeItem("todos");
+                }
+            }
+
+            function createTodo(text) {
+                const li = document.createElement("li");
+                li.textContent = text;
+
+                li.onclick = function () {
+                    if (li.style.textDecoration === "line-through") {
+                        li.style.textDecoration = "none";
+                        li.style.color = "black";
+                    } else {
+                        li.style.textDecoration = "line-through";
+                        li.style.color = "gray";
                     }
-                    let savedtodos = 
-                    localStorage.getItem("todos");
-                    if(savedtodos){
-                        todos = JSON.parse(savedtodos);
-                        todos.forEach(function(todo){
-                          createTodo(todo);  
-                        });
+                };
+
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "X";
+                deleteButton.onclick = function (event) {
+                    event.stopPropagation();
+                    const index = todos.indexOf(text);
+                    if (index !== -1) {
+                        todos.splice(index, 1);
                     }
-                    function createTodo(text){
-                        let li = document.createElement("li");
-                        li.ineerHTML = text;
-                        li.onclick = function(){
-                            if(li.style.textDecoration === "line-through"){
-                                li.style.textDecoration = "none";
-                                li.style.color = "black";
-                            }else{
-                                li.style.textDecoration = "line-through";
-                                li.style.color = "gray";
-                            }
-                        };
-                        let deleteButton = document.createElement("button");
-                        deleteButton.innerHTML = "X";
-                        deleteButton.onclick = function(event){
-                            event.stopPropagation();
-                            let index = todos.indexOf(text);
-                            if(index !== -1){
-                                todos.splice(index, 1);
-                            }
-                            localStorage.setItem(
-                                "todos",
-                                JSON.stringify(todos)
-                            );
-                            li.remove();
-                        };
-                        li.appendChild(deleteButton);
-                        document.getElementById("todolist").appendChild(li);
-                    }
-                    </script>
-                    </body>
->>>>>>> 3f7535baa94f326becd0981dfa39af011882f265
-                    </html>
+                    localStorage.setItem("todos", JSON.stringify(todos));
+                    li.remove();
+                };
+
+                li.appendChild(deleteButton);
+                todoList.appendChild(li);
+            }
+        </script>
+    </body>
+</html>
