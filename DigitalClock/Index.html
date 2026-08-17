@@ -17,23 +17,48 @@
         <button>Settings</button>
     </aside>
 
-    <main class="main">
-        <div class="clock">
-            <h2>DIGITAL CLOCK</h2>
+   <main class="main">
 
-            <div id="time">00:00:00</div>
-            <div id="date">0000. 00. 00</div>
-        </div>
-        <div class="stopwatch">
-            <h2>DIGITAL STOPWATCH</h2>
-            <div id="stopwatchTime">00:00:00</div>
+    <!-- Clock -->
+    <div class="clock">
+        <h2>DIGITAL CLOCK</h2>
 
-            <div class="stopwatchButtons">
-        <button id="startStopwatch">START</button>
-        <button id="resetStopwatch">RESET</button>
+        <div id="time">00:00:00</div>
+        <div id="date">0000. 00. 00</div>
     </div>
-</div>
-    </main>
+
+
+    <!-- Stopwatch -->
+    <div class="stopwatch">
+        <h2>DIGITAL STOPWATCH</h2>
+
+        <div id="stopwatchTime">00:00:00.00</div>
+
+        <div class="stopwatchButtons">
+            <button id="startStopwatch">START</button>
+            <button id="resetStopwatch">RESET</button>
+        </div>
+    </div>
+
+
+    <!-- Settings -->
+    <div class="settings">
+        <h2>SETTINGS</h2>
+
+        <div class="settingItem">
+            <div>
+                <strong>Clock Format</strong>
+                <p>Choose how the time is displayed.</p>
+            </div>
+
+            <select id="clockFormat">
+                <option value="24">24-hour</option>
+                <option value="12">12-hour</option>
+            </select>
+        </div>
+    </div>
+
+</main>
 
 </div>
 <script src="Script.js"></script>

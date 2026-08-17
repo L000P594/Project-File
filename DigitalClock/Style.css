@@ -208,3 +208,14 @@ body {
 .stopwatchButtons button:hover {
     background-color: #dddddd;
 }
+.clock {
+    display: block;
+}
+
+.stopwatch {
+    display: none;
+}
+
+.settings {
+    display: none;
+}
