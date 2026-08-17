@@ -7,20 +7,35 @@
 </head>
 
 <body>
+    <div class="app">
 
-    <div class="clock">
-        <h1>DIGITAL CLOCK</h1>
+    <aside class="sidebar">
+        <h1>CLOCK</h1>
 
-        <div id="time">
-            00:00:00
+        <button class="active">Clock</button>
+        <button>Stopwatch</button>
+        <button>Settings</button>
+    </aside>
+
+    <main class="main">
+        <div class="clock">
+            <h2>DIGITAL CLOCK</h2>
+
+            <div id="time">00:00:00</div>
+            <div id="date">0000. 00. 00</div>
         </div>
+        <div class="stopwatch">
+            <h2>DIGITAL STOPWATCH</h2>
+            <div id="stopwatchTime">00:00:00</div>
 
-        <div id="date">
-            0000. 00. 
-        </div>
+            <div class="stopwatchButtons">
+        <button id="startStopwatch">START</button>
+        <button id="resetStopwatch">RESET</button>
     </div>
+</div>
+    </main>
 
-    <script src="Script.js"></script>
-
+</div>
+<script src="Script.js"></script>
 </body>
 </html>
